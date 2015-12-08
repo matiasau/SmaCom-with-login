@@ -1,6 +1,6 @@
 enchant();
 
-var GAME_X=400,GAME_Y=300;
+var GAME_X=400,GAME_Y=320;
 var MAX_CROPS_NUMBER=5,MAX_GROUP_NUMBER=6;
 var moveSpeed = 2;
 var DIR_LEFT = 0;
@@ -8,6 +8,7 @@ var DIR_RIGHT = 1;
 var DIR_UP = 2;
 var DIR_DOWN = 3;
 var bg;
+var TILESIZE = 16;
 
 function enchantjs(data,sessiondata) {
 	
@@ -43,6 +44,10 @@ function enchantjs(data,sessiondata) {
 			var areaGroup4 = [];
 			var areaGroup5 = [];  
 			
+			var stage = new Group();
+			
+			
+			/*
 			//set background from tiles
 			bg = new Sprite(GAME_X, GAME_Y);
 			var maptip = game.assets['map0.png'];
@@ -54,8 +59,65 @@ function enchantjs(data,sessiondata) {
 				}
 			}
 			bg.image = image;
+			*/
 			
+			var map = new Map(TILESIZE, TILESIZE);
+			map.image = game.assets['map0.png'];
+			map.loadData([
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+            [0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+			[0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+			[0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+			[0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+			[0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+			[0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			],[ [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+			[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+			[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+			[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+			[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+			[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, 23, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 23, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, 23, 23, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+			]
+			);
+			stage.addChild(map);
 		
+			var sign = new Sprite(TILESIZE,TILESIZE);
+			sign.image = game.assets['map0.png'];
+			sign.frame = 24;
+			sign.x = TILESIZE*3;
+			sign.y = TILESIZE*6;
+			stage.addChild(sign);
+			
+			
+			
+			
 			//create background rectangle for dateLabel
 			var dateBGw = 130;
 			var dateBGh = 20;
@@ -179,8 +241,10 @@ function enchantjs(data,sessiondata) {
 			}
 			
 			
+			
 			//add child nodes
-			game.rootScene.addChild(bg);
+			game.rootScene.addChild(stage);
+			//game.rootScene.addChild(bg);
 			game.rootScene.addChild(cropsGroup);
 			game.rootScene.addChild(smileyGroup);
 			game.rootScene.addChild(workerGroup);
@@ -202,14 +266,11 @@ function enchantjs(data,sessiondata) {
 			});
 			
 
-			infolabel.addEventListener('touchstart', function() {
-				wikiQuery("carrot");
+			sign.addEventListener('touchstart', function() {
+				//wikiQuery("carrot");
+				addToInfoWindowWithoutLink("スマコムファームによこそ！","ここに情報があります。<br><img height=\"200px\" src=\"/SmaCom-with-login/smacom/img/teacapusagi.jpg\"></img>","");
 			});
-			
-			
 
-			
-			
 			//game.rootScene.addChild(makeMessage("username: " + sessiondata.user.username));
 	}
 	
@@ -295,7 +356,7 @@ var Worker = Class.create(Sprite, {
 		this.image = game.assets['chara0.png'];
 		this.frame = 7;
 		this.x = 0;
-		this.y = GAME_Y/2;
+		this.y = GAME_Y/2 - 30;
 		this.toX = this.x;
 		this.toY = this.y;
 		this.dir = DIR_DOWN;
@@ -408,6 +469,11 @@ function addToInfoWindow(title,extract,pageurl){
 	$( "#infowindow" ).fadeIn();
 }
 
+function addToInfoWindowWithoutLink(title,extract){
+	$("#infowindow h3").html(title);
+	$("#infowindow p").html(extract);
+	$( "#infowindow" ).fadeIn();
+}
 
 
 //maybe we won't use this but I'll leave it here

@@ -20,4 +20,4 @@
     // a username is user submitted content we must use htmlentities on it before displaying it to the user.
 ?>
 
-<iframe id="enchant-iframe" src="smacom/index.php" width="600" height="450" frameborder="0"></iframe> 
+<iframe id="enchant-iframe" src="smacom/index.php" width="700" height="500" frameborder="0"></iframe> 
