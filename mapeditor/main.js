@@ -321,6 +321,7 @@ var geneButton = (function() {
 		txt += app.maps.bgMap.getDataCode('backgroundMap', app.imagePath);
 		output.value = txt;
 		w.document.body.appendChild(output);
+		console.log(output);
 	};
 	return element;
 })();

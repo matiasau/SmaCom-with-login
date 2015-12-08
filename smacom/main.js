@@ -46,21 +46,6 @@ function enchantjs(data,sessiondata) {
 			
 			var stage = new Group();
 			
-			
-			/*
-			//set background from tiles
-			bg = new Sprite(GAME_X, GAME_Y);
-			var maptip = game.assets['map0.png'];
-			var image = new Surface(GAME_X, GAME_Y);
-
-			for (var j = 0; j < GAME_Y; j += 16) {
-				for (var i = 0; i < GAME_X; i += 16) {
-					image.draw(maptip, 32, 0, 16, 16, i, j, 16, 16);
-				}
-			}
-			bg.image = image;
-			*/
-			
 			var map = new Map(TILESIZE, TILESIZE);
 			map.image = game.assets['map0.png'];
 			map.loadData([
@@ -107,7 +92,9 @@ function enchantjs(data,sessiondata) {
 			]
 			);
 			stage.addChild(map);
-		
+			
+			
+			
 			var sign = new Sprite(TILESIZE,TILESIZE);
 			sign.image = game.assets['map0.png'];
 			sign.frame = 24;
@@ -141,28 +128,6 @@ function enchantjs(data,sessiondata) {
 			dateLabel.y = 10;
 			dateLabel.color = 'white';
 			dateLabel.font = '12px verdana, sans-serif';
-			
-			//create background rectangle for dateLabel
-			var infow = 40;
-			var infoh = 15;
-			var info = new Sprite(infow, infoh);
-			var infosurface = new Surface(infow, infoh);
-			infosurface.context.beginPath();
-			infosurface.context.fillStyle = 'black';
-			infosurface.context.rect(0, 0, infow, infoh);
-			infosurface.context.fill();
-			infosurface.context.stroke();
-			infosurface.context.closePath();
-			info.image = infosurface;
-			info.x = GAME_X - infow - 5;
-			info.y = dateBG.y + 25;
-			
-			//create infolabel
-			infolabel = new Label("Info");
-			infolabel.x = info.x + 5;
-			infolabel.y = info.y +3;
-			infolabel.color = 'white';
-			infolabel.font = '12px verdana, sans-serif';
 				
 			//create a groups
 			cropsGroup = new Group();
@@ -251,8 +216,6 @@ function enchantjs(data,sessiondata) {
 			game.rootScene.addChild(dateBG);
 			game.rootScene.addChild(dateLabel);
 			game.rootScene.addChild(labelGroup);
-			game.rootScene.addChild(info);
-			game.rootScene.addChild(infolabel);
 			
 			
 			game.rootScene.addEventListener(Event.TOUCH_START, function(e){
@@ -268,7 +231,7 @@ function enchantjs(data,sessiondata) {
 
 			sign.addEventListener('touchstart', function() {
 				//wikiQuery("carrot");
-				addToInfoWindowWithoutLink("スマコムファームによこそ！","ここに情報があります。<br><img height=\"200px\" src=\"/SmaCom-with-login/smacom/img/teacapusagi.jpg\"></img>","");
+				addToInfoWindowWithoutLink("スマコムファームによこそ！","ここで情報があります。<br><img height=\"200px\" src=\"/SmaCom-with-login/smacom/img/teacapusagi.jpg\"></img>","");
 			});
 
 			//game.rootScene.addChild(makeMessage("username: " + sessiondata.user.username));
