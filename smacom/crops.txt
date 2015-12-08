@@ -1,0 +1,12 @@
+broccoli 8
+cabbage 7
+corn 6
+cucumber 7
+eggplant 9
+else 11
+extra 7
+lettuce 5
+potherb_mustard 6
+pumpkin 8
+tomato 10
+watermelon 9
