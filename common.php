@@ -3,16 +3,18 @@
     // These variables define the connection information for your MySQL database
 	
 	// oma servu
+	/*
     $username = "root";
     $password = "hulabaloo";
     $host = "localhost";
     $dbname = "test";
+	*/
 
 	// SmaCom
-    // $username = "scf";
-    // $password = "clab20151025";
-    // $host = "133.242.130.175";
-    // $dbname = "test";
+    $username = "root";
+    $password = "";
+    $host = "133.242.130.175";
+    $dbname = "test";
 
 	
     // UTF-8 is a character encoding scheme that allows you to conveniently store
