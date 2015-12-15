@@ -1,0 +1,12 @@
+-show plants according to data in database
+-show growthstatus as a smiley
+-click on plants to show that plants data
+-recognize different users by login and use that information for ????
+-different areas ????
+
+
+TABLE userStats
+1. login with username
+2. move around
+3. logout - save player position to db (player.x, player.y)
+4. open game again, add workers according to data in db

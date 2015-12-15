@@ -88,26 +88,6 @@
             // the user's details.
             $_SESSION['user'] = $row;
             
-			$query = "
-			INSERT INTO user_stats (user_id, loginTime)
-			VALUES (:user_id,:time)
-			";
-			
-			$query_params = array(
-				':user_id' => $_SESSION["user"]["id"],
-				':time' => time()
-			);
-			
-			try
-			{
-				$stmt = $db->prepare($query);
-				$result = $stmt->execute($query_params);
-			}
-			catch(PDOException $ex)
-			{
-				die("Failed to run query: " . $ex->getMessage());
-			}
-			
             // Redirect the user to the private members-only page.
             header("Location: index.php");
             die("Redirecting to: index.php");
