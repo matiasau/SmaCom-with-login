@@ -349,7 +349,7 @@ function enchantjs(data,sessiondata) {
 
 			sign.addEventListener('touchstart', function() {
 				//wikiQuery("carrot");
-				addToInfoWindowWithoutLink("スマコムファームによこそ！","ここで情報があります。<br><img height=\"200px\" src=\"/SmaCom-with-login/smacom/img/teacapusagi.jpg\"></img>","");
+				addToInfoWindowWithoutLink("スマコムファームによこそ！","ここで情報があります。<br><img height=\"200px\" src=\"/game-view/smacom/img/teacupusagi.jpg\"></img>","");
 			});
 
 			dateGroup.addEventListener('touchstart', function() {
